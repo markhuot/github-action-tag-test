@@ -1,0 +1,23 @@
+name: Tag Test
+
+on:
+  push:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Tag the release
+        uses: mathieudutour/github-tag-action@v6.1
+        if: contains('["refs/heads/main"]', github.ref)
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: $GITHUB_RUN_NUMBER
