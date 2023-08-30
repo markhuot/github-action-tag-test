@@ -16,8 +16,15 @@ jobs:
           php-version: '8.1'
 
       - name: Tag the release
-        uses: mathieudutour/github-tag-action@v6.1
+        uses: softprops/action-gh-release@v1
         if: contains('["refs/heads/main"]', github.ref)
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ github.run_number }}
+          name: v${{ github.run_number }}
+          tag_name: v${{ github.run_number }}
+
+      #- name: Tag the release
+      #  uses: mathieudutour/github-tag-action@v6.1
+      #  if: contains('["refs/heads/main"]', github.ref)
+      #  with:
+      #    github_token: ${{ secrets.GITHUB_TOKEN }}
+      #    custom_tag: ${{ github.run_number }}
