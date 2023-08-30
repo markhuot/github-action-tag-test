@@ -20,4 +20,4 @@ jobs:
         if: contains('["refs/heads/main"]', github.ref)
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ GITHUB_RUN_NUMBER }}
+          custom_tag: ${{ env.GITHUB_RUN_NUMBER }}
