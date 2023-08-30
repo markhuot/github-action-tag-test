@@ -21,7 +21,7 @@ jobs:
         with:
           name: v${{ github.run_number }}
           tag_name: v${{ github.run_number }}
-          generate_release_notes: false
+          fail_on_unmatched_files: false
 
       #- name: Tag the release
       #  uses: mathieudutour/github-tag-action@v6.1
