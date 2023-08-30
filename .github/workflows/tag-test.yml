@@ -24,4 +24,4 @@ jobs:
         if: contains('["refs/heads/main"]', github.ref)
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ steps.date.outputs.stdout }}.${{ github.run_number }}
+          custom_tag: ${{ steps.date.outputs.year }}.${{ github.run_number }}
