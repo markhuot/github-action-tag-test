@@ -15,9 +15,13 @@ jobs:
         with:
           php-version: '8.1'
 
+      - name: Get current date
+        id: date
+        run: date +'%Y' >> "$GITHUB_OUTPUT"
+
       - name: Tag the release
         uses: mathieudutour/github-tag-action@v6.1
         if: contains('["refs/heads/main"]', github.ref)
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          custom_tag: ${{ github.run_number }}
+          custom_tag: ${{ steps.date.outputs.stdout }}.${{ github.run_number }}
